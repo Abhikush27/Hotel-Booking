@@ -1,0 +1,37 @@
+.header{
+  display: flex;
+  justify-content:space-between; /*imp */
+  position: sticky;
+  width: 100%;
+  z-index: 100;
+}
+
+.header-logo{
+  height: 65px;
+  margin-left: 60px;
+  margin-top: 8px;
+}
+
+.header-searchbar{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  height: 20px;
+  border: 1px solid grey;
+  border-radius: 800px;
+  margin-top: 20px;
+ 
+}
+/* imp */
+.header-searchbar>input{
+  border: none;
+  width: 250px;
+  outline-width: 0; /*imp*/
+}
+
+.header-right{
+  display: flex;
+  align-items: center;
+  padding-top: 0.7vh;
+  padding-right: 70px;
+}

@@ -1,0 +1,45 @@
+.banner{
+  background: url(https://www.wallpaperup.com/uploads/wallpapers/2016/05/31/972699/71f05332735ef075e5fdf2c8f44c56d3-700.jpg) center center ;
+  height: 60vh;
+  position: relative;
+}
+
+.banner-bg{
+  background-color:#ff7779;
+  width: 450px;
+  height: 380px;
+  
+}
+.banner-bg>h2{
+  float: right;
+  padding-top: 28vh;
+  padding-right: 10vh;
+}
+.banner-bg>button{
+  float: right;
+  margin-top:9vh;
+  margin-right: 10vh;
+  background-color: black;
+  color: white;
+  width: 125px;
+  height: 30px;
+}
+.banner-bg>button:hover{
+  background-color: white;
+  color: #ff7779;
+  font-weight: 600;
+}
+
+.search-date{
+  display: flex;
+  flex-direction: column;
+  /* important */
+}
+
+.search-date>button{
+  border:0;
+  font-weight: 70;
+  color:#ff7779 ;
+  background-color: white;
+  z-index: 100%;
+}
