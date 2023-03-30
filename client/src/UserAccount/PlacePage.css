@@ -1,0 +1,19 @@
+.add-place{
+border: 0;
+border-radius: 1.25rem;
+background: rgb(249, 83, 83);
+font-family: -system-ui, sans-serif;
+line-height: 1.2;
+text-decoration: none;
+padding-top: 1vh;
+padding-right: 4vh;
+padding-left: 4vh;
+padding-bottom: 1.5vh;
+margin: 0.25rem;
+cursor: pointer;
+display: inline-block;
+}
+
+.addicon{
+    padding-top: 60vh;
+}

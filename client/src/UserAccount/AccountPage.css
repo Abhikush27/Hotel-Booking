@@ -1,2 +1,30 @@
 
-    
+.profile-css{
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 8vh;
+}
+
+.booking-css{
+    margin-left: 18vh;
+    margin-right: 15vh;
+}
+.profile-content{
+    margin-top: 7vh;
+}
+.profile-content button{
+    margin-top: 2vh;
+    width: 50vh;
+    height: 4vh;
+    border-radius:1.5rem;
+    background-color: white;
+    color: #ff7779;
+    text-transform: uppercase;
+    font-family:bold;
+}
+.profile-content button:hover{
+height: 5vh;
+width: 55vh;
+/* background-color: #ff7779; */
+}   
+

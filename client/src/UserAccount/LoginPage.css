@@ -1,5 +1,7 @@
 .login-page {
-  <Link to ={'/account'}>My Bookings</Link>
+  width: 360px;
+  padding: 7% 0 0;
+  margin: auto;
   }
   .login-page .form .login{
     margin-top: -31px;

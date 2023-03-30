@@ -16,18 +16,5 @@ async function verify(req,res,next){
         return res.status(500).json(err)
     }
 }
-// const {token} = req.cookies;
-// if(token){
-//     jwt.verify(token,"abhikush",{},(err,user) =>{
-//         if(err)
-//         throw err;
-//         res.json(user);
-//     });
-
-// } else{
-//     res.json(null);
-// }
-
-// }
 
 module.exports = {verify}

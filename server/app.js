@@ -6,7 +6,10 @@ const database= require('./database/database');
 
 const registerRoute = require('./routes/registerRoute');
 const loginRoute = require('./routes/loginRoute');
-const profileRoute = require('./routes/UserRouter')
+const profileRoute = require('./routes/UserRouter');
+const logoutRoute = require('./routes/logoutRoute');
+
+
 // "bcrypt" is used to encrypt the password
 const bcrypt = require('bcryptjs');
 const bcryptSalt= bcrypt.genSaltSync(10);
@@ -28,7 +31,7 @@ app.use(cors({
 app.use(loginRoute)
 app.use(registerRoute)
 app.use(profileRoute);
-
+app.use(logoutRoute);
 
 app.get('/test',function(req,res){
     res.json('tested');
