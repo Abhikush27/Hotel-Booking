@@ -5,15 +5,33 @@ background: rgb(249, 83, 83);
 font-family: -system-ui, sans-serif;
 line-height: 1.2;
 text-decoration: none;
-padding-top: 1vh;
+padding-top: 2vh;
 padding-right: 4vh;
-padding-left: 4vh;
+padding-left: 5vh;
 padding-bottom: 1.5vh;
-margin: 0.25rem;
+margin-left: 4vh;
+margin-top: 13vh;
 cursor: pointer;
 display: inline-block;
+/* display: flex;
+justify-content: center; */
 }
 
 .addicon{
-    padding-top: 60vh;
+    color: white;
+    text-decoration: none;
+    display: flex;
+justify-content: center;
 }
+
+.photo-css{
+    color: black;
+}
+.checkin-out{
+    display: flex;
+    width: 100%;
+}
+.checkin-input{
+    width: 33%;
+}
+

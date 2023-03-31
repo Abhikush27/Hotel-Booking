@@ -13,12 +13,5 @@ async function connectMongoDB(){
   }
 }
 
-  // var connection = mongoose.connection;
-  // connection.on('error',()=>{
-  //   console.log("error in connection with DB");
-  // })
-  // connection.on('connected', ()=>{
-  //   console.log("connected to DB successfully");
-  // });
 
   module.exports=connectMongoDB;

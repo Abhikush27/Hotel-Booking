@@ -36,10 +36,10 @@ if(redirect){
  return (
      <div className='profile-css'>
 
-    <nav className='profile-links'>
-      <Link className = "account-css" to ="/account">My Profile</Link>
-      <Link className="booking-css" to ="/account/bookings">My Bookings</Link>
-      <Link className = "places-css" to ="/account/places">My Accomodations</Link>
+    <nav>
+      <Link className = "profile-links" to ="/account">My Profile</Link>
+      <Link className="booking-css profile-links" to ="/account/bookings">My Bookings</Link>
+      <Link className = "profile-links" to ="/account/places">My Accomodations</Link>
     </nav>
 
 {/* SubPage for Profile */}

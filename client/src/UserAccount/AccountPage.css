@@ -9,9 +9,11 @@
     margin-left: 18vh;
     margin-right: 15vh;
 }
+
 .profile-content{
     margin-top: 7vh;
 }
+
 .profile-content button{
     margin-top: 2vh;
     width: 50vh;
@@ -28,3 +30,7 @@ width: 55vh;
 /* background-color: #ff7779; */
 }   
 
+.profile-links{
+    color: black;
+    text-decoration: none;
+}
