@@ -2,7 +2,6 @@ import React from 'react'
 import Banner from './Banner'
 import './Home.css'
 import Cards from './Cards.js'
-import axios from "axios"
 const images1 = ['img11.webp','img12.webp']
 const images2 = ['img13.webp','img14.webp']
 const images3 = ['img6.webp','img7.webp']
@@ -12,8 +11,8 @@ const images6 =['img26.webp','img27.webp']
 
 function Home() {
 
-const data = (axios.get('/api/rooms/getallrooms')).data;
-console.log(data);
+// const data = (axios.get('/api/rooms/getallrooms')).data;
+// console.log(data);
   return (
     <div className='home'>
       <Banner />

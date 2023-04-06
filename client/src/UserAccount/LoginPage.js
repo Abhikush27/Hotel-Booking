@@ -33,15 +33,15 @@ function LoginPage() {
   }
 
   return (
-    <div class="login-page">
-      <div class="form">
-        <div class="login">
-          <div class="login-header">
+    <div className="login-page">
+      <div className="form">
+        <div className="login">
+          <div className="login-header">
             <h3>LOGIN</h3>
             <p>Please enter your credentials to login.</p>
           </div>
         </div>
-        <form class="login-form" onSubmit={loginUser}>
+        <form className="login-form" onSubmit={loginUser}>
           <input
             type="email"
             placeholder="abc@gmail.com"

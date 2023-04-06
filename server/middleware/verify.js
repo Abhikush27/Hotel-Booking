@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 async function verify(req,res,next){
     try{
         const token = req.cookies.token
-       
+       if(!token)  return res.status(401).json("unauthorized")
         const user = jwt.verify(token,"abhikush")
         if(!user) return res.status(401).json("unauthorized")
         if(user){
