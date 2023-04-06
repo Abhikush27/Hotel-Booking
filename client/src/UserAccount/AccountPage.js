@@ -47,7 +47,7 @@ if(redirect){
  <div className='profile-content'>
 
   <h4>logged in as {user?.name} </h4>
-  <Button variant="outlined" onChange={logout}>Logout</Button>
+  <Button variant="outlined" onClick={logout} >Logout</Button>
 
     </div>
      )}
