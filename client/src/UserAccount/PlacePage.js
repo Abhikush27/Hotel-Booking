@@ -3,6 +3,7 @@ import {Link} from "react-router-dom"
 import './PlacePage.css'
 import { useParams } from 'react-router-dom'
 import { Button } from '@mui/material'
+import axios from 'axios'
 // import AddIcon from '@mui/icons-material/Add';
 
 function PlacePage() {
@@ -11,11 +12,25 @@ const {action} = useParams();
 const [title,setTitle]=useState('');
 const [address,setAddress]=useState('');
 const [Photos,setPhotos]=useState([]);
-const [Upload,setUpload]=useState('');
+const [photoLink,setPhotoLink]=useState('');
 const [description,setdescription]=useState('');
 const [checkIn,setCheckIn]=useState('');
 const [checkOut,setCheckOut]=useState('');
 const [maxGuest,setMaxGuest]=useState(1);
+
+
+// function to add photo using link
+async function addPhotoByLink(e){
+  // to prevent reloading on clicking the button
+  e.preventDefault();
+  const {data} = await axios.post('/upload-link-photo',{link:photoLink});
+  setPhotos(prev =>{
+    // stores the previous value and add the new value
+    return [...prev,data]
+  });
+  setPhotoLink('');
+}
+
   return (
 
    <div>
@@ -42,10 +57,10 @@ const [maxGuest,setMaxGuest]=useState(1);
 
       <div className='photo-css'>
         <input type="text" value={Photos} onChange={(e)=>setPhotos(e.target.value)} style={{height: "4vh",width:"84%"}} placeholder='Add image using "Link"' />
-        <Button style={{color: "white", background: "black" ,margin:"2.2vh"}}>Add Photo</Button>
+        <Button onClick = {addPhotoByLink} style={{color: "white", background: "black" ,margin:"2.2vh"}}>Add Photo</Button>
       </div>
       <div>
-        <button value={Upload} onChange={(e)=>setUpload(e.target.value)}
+        <button value={photoLink} onChange={(e)=>setPhotoLink(e.target.value)}
         style={{border: "2px solid grey", height:"10vh",width:"25vh"}}><b>Upload</b></button>
       </div>
 
