@@ -12,23 +12,24 @@ const {action} = useParams();
 const [title,setTitle]=useState('');
 const [address,setAddress]=useState('');
 const [Photos,setPhotos]=useState([]);
-const [photoLink,setPhotoLink]=useState('');
+// const [photoLink,setPhotoLink]=useState('');
 const [description,setdescription]=useState('');
 const [checkIn,setCheckIn]=useState('');
 const [checkOut,setCheckOut]=useState('');
 const [maxGuest,setMaxGuest]=useState(1);
 
-
-// function to add photo using link
-async function addPhotoByLink(e){
-  // to prevent reloading on clicking the button
-  e.preventDefault();
-  const {data} = await axios.post('/upload-link-photo',{link:photoLink});
+ function addPhotoByLink(event){
+const files = event.target.files;
+const data = new FormData();
+data.set('photos',files);
+axios.post('/upload',data,{
+  headers:{'Content-type':'multipart/form-data'}
+}).then(response =>{
+  const{data:filename} = response;
   setPhotos(prev =>{
-    // stores the previous value and add the new value
-    return [...prev,data]
-  });
-  setPhotoLink('');
+    return [...prev, filename];
+  })
+})
 }
 
   return (
@@ -55,13 +56,12 @@ async function addPhotoByLink(e){
       <input type="text" value={address} onChange={(e)=>setAddress(e.target.value)} style={{height: "4vh",width:"92%"}} placeholder='address' />
       <h3>Photos</h3>
 
-      <div className='photo-css'>
-        <input type="text" value={Photos} onChange={(e)=>setPhotos(e.target.value)} style={{height: "4vh",width:"84%"}} placeholder='Add image using "Link"' />
-        <Button onClick = {addPhotoByLink} style={{color: "white", background: "black" ,margin:"2.2vh"}}>Add Photo</Button>
-      </div>
       <div>
-        <button value={photoLink} onChange={(e)=>setPhotoLink(e.target.value)}
-        style={{border: "2px solid grey", height:"10vh",width:"25vh"}}><b>Upload</b></button>
+        <label value={Photos} onChange={(e)=>setPhotos(e.target.value)} className='upload-photos'>
+          <input type="file" className='hidden' onChange={addPhotoByLink} placeholder='Add image using "Link"' />
+         <b style={{ color:"black", justifyContent:"center",textAlign:"center"}}>Upload</b>
+          
+          </label>
       </div>
 
       <h3>Description</h3>
