@@ -12,16 +12,20 @@ const {action} = useParams();
 const [title,setTitle]=useState('');
 const [address,setAddress]=useState('');
 const [Photos,setPhotos]=useState([]);
-// const [photoLink,setPhotoLink]=useState('');
 const [description,setdescription]=useState('');
 const [checkIn,setCheckIn]=useState('');
 const [checkOut,setCheckOut]=useState('');
 const [maxGuest,setMaxGuest]=useState(1);
 
+
  function addPhotoByLink(event){
 const files = event.target.files;
 const data = new FormData();
-data.set('photos',files);
+
+for(let i=0;i<files.length;i++){
+  data.append('photos',files[i]);
+}
+
 axios.post('/upload',data,{
   headers:{'Content-type':'multipart/form-data'}
 }).then(response =>{
@@ -31,6 +35,7 @@ axios.post('/upload',data,{
   })
 })
 }
+
 
   return (
 
@@ -58,7 +63,7 @@ axios.post('/upload',data,{
 
       <div>
         <label value={Photos} onChange={(e)=>setPhotos(e.target.value)} className='upload-photos'>
-          <input type="file" className='hidden' onChange={addPhotoByLink} placeholder='Add image using "Link"' />
+          <input type="file" multiple className=' hidden' onChange={addPhotoByLink} placeholder='Add image using "Link"' />
          <b style={{ color:"black", justifyContent:"center",textAlign:"center"}}>Upload</b>
           
           </label>

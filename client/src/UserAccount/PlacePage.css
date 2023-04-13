@@ -39,6 +39,7 @@ justify-content: center;
     border: 3px solid black;
     background-color: rgb(233, 231, 231);
     display: inline-block;
+    cursor: pointer;
     width: 25vh;
     height: 15vh;
 }
