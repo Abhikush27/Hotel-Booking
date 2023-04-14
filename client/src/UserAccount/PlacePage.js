@@ -29,9 +29,9 @@ for(let i=0;i<files.length;i++){
 axios.post('/upload',data,{
   headers:{'Content-type':'multipart/form-data'}
 }).then(response =>{
-  const{data:filename} = response;
+  const{data:filenames} = response;
   setPhotos(prev =>{
-    return [...prev, filename];
+    return [...prev, ...filenames];
   })
 })
 }
