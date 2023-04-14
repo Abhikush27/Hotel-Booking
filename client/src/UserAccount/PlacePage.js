@@ -19,6 +19,7 @@ const [maxGuest,setMaxGuest]=useState(1);
 
 
  function addPhotoByLink(event){
+  event.preventDefault()
 const files = event.target.files;
 const data = new FormData();
 
@@ -26,6 +27,7 @@ for(let i=0;i<files.length;i++){
   data.append('photos',files[i]);
 }
 
+console.log("hello")
 axios.post('/upload',data,{
   headers:{'Content-type':'multipart/form-data'}
 }).then(response =>{
@@ -52,7 +54,7 @@ axios.post('/upload',data,{
 
 {action ==='addplaces' &&(
    <div>
-    <form className='places-form'>
+    <form onSubmit={e=>e.preventDefault()} className='places-form'>
       <h3>Title</h3>
       <p>title for your place</p>
       <input type="text" value ={title} onChange = {(e)=>setTitle(e.target.value)} style={{height: "4vh",width:"92%"}} placeholder='title' />
@@ -63,8 +65,8 @@ axios.post('/upload',data,{
 
       <div>
         <label value={Photos} onChange={(e)=>setPhotos(e.target.value)} className='upload-photos'>
-          <input type="file" multiple className=' hidden' onChange={addPhotoByLink} placeholder='Add image using "Link"' />
-         <b style={{ color:"black", justifyContent:"center",textAlign:"center"}}>Upload</b>
+          <input type="file" multiple className='' onChange={addPhotoByLink} placeholder='Add image using "Link"' />
+         <button style={{ color:"black", justifyContent:"center",textAlign:"center"}}>Upload</button>
           
           </label>
       </div>
