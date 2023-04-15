@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express.Router();
 const imageDownloader = require('image-downloader');
+const jwt = require('jsonwebtoken')
 const multer = require('multer');
-// multer is a middleware used to uupload the files to the server
+// multer is a middleware used to upload the files to the server
 const fs = require('fs');
 // to rename files on the server we use 'file system' fs
 const photosMiddleware=multer({dest:'uploads/'});
@@ -30,7 +31,16 @@ app.post("/upload",photosMiddleware.array('photos',100),async(req,res)=>{
 })
 
 app.post('/places', (req,res)=>{
-   
+   const {token} = req.cookies;
+   jwt.verify(token,jwtSecret, {}, async(err ,userData)=>{
+      if(err) throw err;
+// creating the scehma
+      await Place.create({
+         owner:userData.id,
+         
+      })
+   })
+
 })
     
 module.exports=app;
