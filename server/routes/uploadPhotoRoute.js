@@ -5,8 +5,9 @@ const multer = require('multer');
 // multer is a middleware used to uupload the files to the server
 const fs = require('fs');
 // to rename files on the server we use 'file system' fs
-
 const photosMiddleware=multer({dest:'uploads/'});
+const Place = import ('../models/placemodel');
+
 
 app.post("/upload",photosMiddleware.array('photos',100),async(req,res)=>{
    try{
@@ -20,16 +21,16 @@ app.post("/upload",photosMiddleware.array('photos',100),async(req,res)=>{
          fs.renameSync(path,newPath);
          uploadedFiles.push(newPath);
       }
-
-
-var placeDetails = new 
-
       res.json(req.files);
       // res.json(uploadedFiles);
 
    }catch(err){
       console.log(err)
    }
+})
+
+app.post('/places', (req,res)=>{
+   
 })
     
 module.exports=app;

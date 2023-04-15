@@ -28,8 +28,8 @@ function PlacePage() {
     }
 
     console.log("hello");
-    axios
-      .post("/upload", data, {
+    // This will take the .post request from "uploadPhotoRoute"
+    axios.post("/upload", data, {
         headers: { "Content-type": "multipart/form-data" },
       })
       .then((response) => {
