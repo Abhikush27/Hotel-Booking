@@ -20,6 +20,7 @@ app.post("/upload",photosMiddleware.array('photos',100),async(req,res)=>{
          uploadedFiles.push(newPath);
       }
       res.json(req.files);
+      // res.json(uploadedFiles);
 
    }catch(err){
       console.log(err)
