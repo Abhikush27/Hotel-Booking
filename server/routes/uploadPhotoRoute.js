@@ -6,7 +6,8 @@ const multer = require('multer');
 const fs = require('fs');
 // to rename files on the server we use 'file system' fs
 
-const photosMiddleware=multer({dest:'uploads/'})
+const photosMiddleware=multer({dest:'uploads/'});
+
 app.post("/upload",photosMiddleware.array('photos',100),async(req,res)=>{
    try{
       const uploadedFiles=[];
@@ -19,6 +20,10 @@ app.post("/upload",photosMiddleware.array('photos',100),async(req,res)=>{
          fs.renameSync(path,newPath);
          uploadedFiles.push(newPath);
       }
+
+
+var placeDetails = new 
+
       res.json(req.files);
       // res.json(uploadedFiles);
 

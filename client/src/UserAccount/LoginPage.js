@@ -46,7 +46,7 @@ function LoginPage() {
             type="email"
             placeholder="abc@gmail.com"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}  
           />
           <input
             type="password"
