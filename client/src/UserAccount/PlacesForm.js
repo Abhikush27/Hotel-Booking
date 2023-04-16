@@ -37,7 +37,7 @@ function PlacesForm() {
 
     async function addNewPlaces(ev) {
         ev.preventDefault();
-        const placeData = {title,address,Photos,description,checkIn,checkOut,maxGuest, };
+        const placeData = {title,address,Photos,description,checkIn,checkOut,maxGuest };
         await axios.post("/places", placeData);
     
       }

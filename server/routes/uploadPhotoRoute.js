@@ -36,12 +36,13 @@ app.post('/places', (req,res)=>{
    jwt.verify(token,jwtSecret, {}, async(err ,userData)=>{
       if(err) throw err;
 // creating the schema
-      await Place.create({
+      const place = await Place.create({
          owner:userData.id,
          title,address,description,photos,
          checkIn,checkOut,maxGuests,
          
       })
+      res.json(place);
    })
 
 })
