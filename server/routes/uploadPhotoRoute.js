@@ -7,7 +7,7 @@ const multer = require('multer');
 const fs = require('fs');
 // to rename files on the server we use 'file system' fs
 const photosMiddleware=multer({dest:'uploads/'});
-const Place = import ('../models/placemodel');
+const Place = require ('../models/placemodel');
 
 
 app.post("/upload",photosMiddleware.array('photos',100),async(req,res)=>{
@@ -32,11 +32,14 @@ app.post("/upload",photosMiddleware.array('photos',100),async(req,res)=>{
 
 app.post('/places', (req,res)=>{
    const {token} = req.cookies;
+   const{title,address,description,photos,checkIn,checkOut,maxGuests} = req.body;
    jwt.verify(token,jwtSecret, {}, async(err ,userData)=>{
       if(err) throw err;
-// creating the scehma
+// creating the schema
       await Place.create({
          owner:userData.id,
+         title,address,description,photos,
+         checkIn,checkOut,maxGuests,
          
       })
    })
