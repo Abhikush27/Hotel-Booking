@@ -7,7 +7,7 @@ const multer = require('multer');
 const fs = require('fs');
 // to rename files on the server we use 'file system' fs
 const photosMiddleware=multer({dest:'uploads/'});
-const Place = require ('../models/placemodel');
+const Place = require('../models/loginmodel');
 
 
 app.post("/upload",photosMiddleware.array('photos',100),async(req,res)=>{
