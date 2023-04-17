@@ -30,10 +30,11 @@ app.post("/upload",photosMiddleware.array('photos',100),async(req,res)=>{
    }
 })
 
-app.post('/places', (req,res)=>{
+app.post('/places', photosMiddleware.single('avatar'),(req,res)=>{
    const {token} = req.cookies;
+   console.log(req.body)
    const{title,address,description,photos,checkIn,checkOut,maxGuests} = req.body;
-   jwt.verify(token,jwtSecret, {}, async(err ,userData)=>{
+   jwt.verify(token,"abhikush", {}, async(err ,userData)=>{
       if(err) throw err;
 // creating the schema
       const place = await Place.create({

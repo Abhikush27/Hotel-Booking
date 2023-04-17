@@ -57,7 +57,7 @@ function PlacesForm() {
     {/* upload photo functionality */}
     <div>
       <label value={Photos} onChange={(e) => setPhotos(e.target.value)} className="upload-photos">
-        <input type="file" multiple className="" onChange={addPhotoByLink} placeholder='Add image using "Link" '/>
+        <input type="file" multiple className="page-photo" onChange={addPhotoByLink} placeholder='Add image using "Link" '/>
         <button style={{ color: "black", justifyContent: "center", textAlign: "center",  }} >
           Upload
         </button>
