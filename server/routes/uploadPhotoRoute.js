@@ -40,27 +40,28 @@ const storage = multer.diskStorage({
    }
  })
  
- const photosMiddleware = multer({ storage: storage })
+ const photosMiddleware = multer({ storage })
 
 
-app.post('/places', photosMiddleware.single('photos'),(req,res)=>{
+app.post('/places', photosMiddleware.array("photos"),(req,res)=>{
 
-console.log(req.file);
-
-   const {token} = req.cookies;
    console.log(req.body)
-   const{title,address,description,photos,checkIn,checkOut,maxGuests} = req.body;
-   jwt.verify(token,"abhikush", {}, async(err ,userData)=>{
-      if(err) throw err;
-// creating the schema
-      const place = await Place.create({
-         owner:userData.id,
-         title,address,description,photos,
-         checkIn,checkOut,maxGuests,
+   console.log(req.files,"files h")
+
+   // const {token} = req.cookies;
+//    const {title,address,description,photos,checkIn,checkOut,maxGuests} = req.body;
+//    jwt.verify(token,"abhikush", {}, async(err ,userData)=>{
+//       if(err) throw err;
+// // creating the schema
+//       const place = await Place.create({
+//          owner:userData.id,
+//          title,address,description,photos,
+//          checkIn,checkOut,maxGuests,
          
-      })
-      res.json(place);
-   })
+//       })
+//       res.json(place);
+//    })
+return res.json("done")
 
 })
     

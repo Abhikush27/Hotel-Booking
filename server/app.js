@@ -18,6 +18,7 @@ const bcryptSalt= bcrypt.genSaltSync(10);
 // const jwt = require('jsonwebtoken');
 
 app.use(express.json());
+app.use(express.urlencoded({extended:true}))
 // app.use(express.json());
 app.use(cookieParser())
 

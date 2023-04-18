@@ -15,30 +15,41 @@ function PlacesForm() {
 
 
     function addPhotoByLink(event) {
-        event.preventDefault();
+        // event.preventDefault();
         const files = event.target.files;
-        const data = new FormData();
+        setPhotos(files)
+        // const data = new FormData();
     
-        for (let i = 0; i < files.length; i++) {
-          data.append("photos", files[i]);
-        }
+        // for (let i = 0; i < files.length; i++) {
+        //   data.append("photos", files[i]);
+        // }
     
         // This will take the .post request from "uploadPhotoRoute"
-        axios.post("/upload", data, {
-            headers: { "Content-type": "multipart/form-data" },
-          })
-          .then((response) => {
-            const { data: filenames } = response;
-            setPhotos((prev) => {
-              return [...prev, ...filenames];
-            });
-          });
+        // axios.post("/upload", data, {
+        //     headers: { "Content-type": "multipart/form-data" },
+        //   })
+        //   .then((response) => {
+        //     const { data: filenames } = response;
+        //     setPhotos((prev) => {
+        //       return [...prev, ...filenames];
+        //     });
+        //   });
       }
 
     async function addNewPlaces(ev) {
         ev.preventDefault();
         const placeData = {title,address,Photos,description,checkIn,checkOut,maxGuest };
-        await axios.post("/places", placeData);
+        const formData = new FormData()
+
+        formData.append("title",title)
+        // formData.append("photos",Photos)
+        Array.from(Photos).forEach(img=>{formData.append("photos",img)})
+        formData.append("address",address)
+        formData.append("description",description)
+        formData.append("checkIn",checkIn)
+        formData.append("checkOut",checkOut)
+        formData.append("maxGuest",maxGuest)
+        await axios.post("/places", formData,{headers:{'Content-Type':"multipart/form-data"}});
     
       }
 
@@ -56,11 +67,11 @@ function PlacesForm() {
 
     {/* upload photo functionality */}
     <div>
-      <label value={Photos} onChange={(e) => setPhotos(e.target.value)} className="upload-photos">
+      <label value={Photos} className="upload-photos">
         <input type="file" multiple className="photos" onChange={addPhotoByLink} placeholder='Add image using "Link" '/>
-        <button style={{ color: "black", justifyContent: "center", textAlign: "center",  }} >
+        {/* <button style={{ color: "black", justifyContent: "center", textAlign: "center",  }} >
           Upload
-        </button>
+        </button> */}
       </label>
     </div>
 
@@ -86,7 +97,7 @@ function PlacesForm() {
       </div>
     </div>
 
-    <Button style={{ background: "red", color: "white" }}>Save</Button>
+    <Button type='submit' style={{ background: "red", color: "white" }}>Save</Button>
   </form>
 
   )
