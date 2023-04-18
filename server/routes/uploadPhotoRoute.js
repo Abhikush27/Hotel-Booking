@@ -6,31 +6,47 @@ const multer = require('multer');
 // multer is a middleware used to upload the files to the server
 const fs = require('fs');
 // to rename files on the server we use 'file system' fs
-const photosMiddleware=multer({dest:'uploads/'});
+// const photosMiddleware=multer({dest:''});
 const Place = require('../models/loginmodel');
 
 
-app.post("/upload",photosMiddleware.array('photos',100),async(req,res)=>{
-   try{
-      const uploadedFiles=[];
-      console.log(req.files)
-      for(let i=0;i<req.files.length;i++){
-         const {path,originalname} = req.files[i];
-         const parts = originalname.split('.');
-         const extended = parts[parts.length-1];
-         const newPath = path + '.' + extended;
-         fs.renameSync(path,newPath);
-         uploadedFiles.push(newPath);
-      }
-      res.json(req.files);
-      // res.json(uploadedFiles);
+// app.post("/upload",photosMiddleware.array('photos',100),async(req,res)=>{
+//    try{
+//       const uploadedFiles=[];
+//       console.log(req.files)
+//       for(let i=0;i<req.files.length;i++){
+//          const {path,originalname} = req.files[i];
+//          const parts = originalname.split('.');
+//          const extended = parts[parts.length-1];
+//          const newPath = path + '.' + extended;
+//          fs.renameSync(path,newPath);
+//          uploadedFiles.push(newPath);
+//       }
+//       res.json(req.files);
+//       // res.json(uploadedFiles);
 
-   }catch(err){
-      console.log(err)
+//    }catch(err){
+//       console.log(err)
+//    }
+// })
+
+
+const storage = multer.diskStorage({
+   destination: function (req, file, cb) {
+     cb(null, 'uploads/')
+   },
+   filename: function (req, file, cb) {
+     cb(null, Date.now() + file.originalname)
    }
-})
+ })
+ 
+ const photosMiddleware = multer({ storage: storage })
 
-app.post('/places', photosMiddleware.single('avatar'),(req,res)=>{
+
+app.post('/places', photosMiddleware.single('photos'),(req,res)=>{
+
+console.log(req.file);
+
    const {token} = req.cookies;
    console.log(req.body)
    const{title,address,description,photos,checkIn,checkOut,maxGuests} = req.body;
