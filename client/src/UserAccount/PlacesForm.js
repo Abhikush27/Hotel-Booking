@@ -43,7 +43,7 @@ function PlacesForm() {
 
         formData.append("title",title)
         // formData.append("photos",Photos)
-        Array.from(Photos).forEach(img=>{formData.append("photos",img)})
+         Array.from(Photos).forEach(img=>{formData.append("photos",img)})
         formData.append("address",address)
         formData.append("description",description)
         formData.append("checkIn",checkIn)
@@ -69,9 +69,6 @@ function PlacesForm() {
     <div>
       <label value={Photos} className="upload-photos">
         <input type="file" multiple className="photos" onChange={addPhotoByLink} placeholder='Add image using "Link" '/>
-        {/* <button style={{ color: "black", justifyContent: "center", textAlign: "center",  }} >
-          Upload
-        </button> */}
       </label>
     </div>
 
