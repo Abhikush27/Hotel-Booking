@@ -40,13 +40,14 @@ const storage = multer.diskStorage({
 
 const photosMiddleware = multer({ storage });
 
+
 app.post("/places", photosMiddleware.array("photos"), async (req, res) => {
   try{
 
     const { title, address, description, photos, checkIn, checkOut, maxGuests } =
       req.body;
     console.log(req.body);
-    console.log(req.files, "files h");
+    console.log(req.files, "files");
   
     const { token } = req.cookies;
   
