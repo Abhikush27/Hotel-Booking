@@ -84,11 +84,11 @@ function PlacesForm() {
         <input type="text" value={checkIn} onChange={(e) => setCheckIn(e.target.value)}/>
       </div>
       <div className="checkin-input">
-        <h5>Checkin time</h5>
+        <h5>CheckOut time</h5>
         <input type="text" value={checkOut} onChange={(e) => setCheckOut(e.target.value)} />
       </div>
       <div className="checkin-input">
-        <h5>Checkin time</h5>
+        <h5>Number of Guest</h5>
         <input type="text" value={maxGuest} onChange={(e) => setMaxGuest(e.target.value)}/>
       </div>
     </div>

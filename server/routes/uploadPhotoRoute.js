@@ -71,7 +71,6 @@ app.post("/places", photosMiddleware.array("photos"), async (req, res) => {
     console.error(err)
     return res.status(500).json(err)
   }
-  // return res.json("done")
 });
 
 module.exports = app;
