@@ -13,7 +13,7 @@ function PlacePage() {
       {action !== "addplaces" && (
         <div className="add-place">
           <Link className="addicon" to={"/account/places/addplaces"}>
-            {/* {" "} */}
+
             Add Places
             {/* <AddIcon/> */}
           </Link>

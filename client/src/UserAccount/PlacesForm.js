@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
 import { Button } from "@mui/material";
 import axios from "axios";
+import { Navigate } from 'react-router-dom';
+// import { Navigate } from 'react-router-dom';
 
 
 function PlacesForm() {
@@ -12,7 +14,7 @@ function PlacesForm() {
     const [checkIn, setCheckIn] = useState("");
     const [checkOut, setCheckOut] = useState("");
     const [maxGuest, setMaxGuest] = useState(1);
-
+    const[redirect,setRedirect] = useState(null);
 
     function addPhotoByLink(event) {
         // event.preventDefault();
@@ -49,9 +51,12 @@ function PlacesForm() {
         formData.append("checkOut",checkOut)
         formData.append("maxGuest",maxGuest)
         await axios.post("/places", formData,{headers:{'Content-Type':"multipart/form-data"}});
-    
+        setRedirect('/account/places');
       }
 
+     if(redirect){
+      return <Navigate to ={redirect}/>
+     }
 
   return (
     
@@ -93,7 +98,7 @@ function PlacesForm() {
       </div>
     </div>
 
-    <Button type='submit' style={{ background: "red", color: "white" }}>Save</Button>
+    <Button type='submit' style={{ background: "red", color: "white" }} >Save</Button>
   </form>
 
   )
