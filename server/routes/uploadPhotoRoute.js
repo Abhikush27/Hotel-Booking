@@ -7,7 +7,6 @@ const multer = require("multer");
 const fs = require("fs");
 // to rename files on the server we use 'file system' fs
 const Place = require("../models/placemodel");
-const UserModel = require("../models/loginmodel");
 
 // app.post("/upload",photosMiddleware.array('photos',100),async(req,res)=>{
 //    try{
@@ -50,7 +49,6 @@ app.post("/places", photosMiddleware.array("photos"), async (req, res) => {
     console.log(req.files, "files");
   
     const { token } = req.cookies;
-  
     const user = jwt.verify(token,"abhikush")
     console.log(user)
       const place = new Place({
@@ -72,5 +70,13 @@ app.post("/places", photosMiddleware.array("photos"), async (req, res) => {
     return res.status(500).json(err)
   }
 });
+
+
+//TO DISPLAY THE PAGES
+app.get('/places',(req,res)=>{
+  const { token } = req.cookies;
+  const user = jwt.verify(token,"abhikush");
+  res.json(Place.find({owner:user.id}))
+}) 
 
 module.exports = app;
