@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 // app.use(express.json());
 app.use(cookieParser())
-
+app.use("/uploads",express.static(__dirname+"/uploads"))
 database();
 
 // "cors" will connect the register page with localhost:7000

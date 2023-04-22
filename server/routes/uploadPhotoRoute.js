@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
     cb(null, "uploads/");
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + file.originalname);
+    cb(null, Date.now()+ "-" + file.originalname);
   },
 });
 
@@ -24,10 +24,13 @@ const photosMiddleware = multer({ storage });
 app.post("/places", photosMiddleware.array("photos"), async (req, res) => {
   try{
 
-    const { title, address, description, photos, checkIn, checkOut, maxGuests } =
+    const { title, address, description, checkIn, checkOut, maxGuests } =
       req.body;
     console.log(req.body);
     console.log(req.files, "files");
+    const photos = req.files.map(file=>{
+      return file.destination + file.filename
+    })
   
     const { token } = req.cookies;
     const user = jwt.verify(token,"abhikush")

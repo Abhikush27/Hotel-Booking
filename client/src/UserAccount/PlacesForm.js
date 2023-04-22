@@ -19,23 +19,7 @@ function PlacesForm() {
     function addPhotoByLink(event) {
         // event.preventDefault();
         const files = event.target.files;
-        setPhotos(files)
-        // const data = new FormData();
-    
-        // for (let i = 0; i < files.length; i++) {
-        //   data.append("photos", files[i]);
-        // }
-    
-        // This will take the .post request from "uploadPhotoRoute"
-        // axios.post("/upload", data, {
-        //     headers: { "Content-type": "multipart/form-data" },
-        //   })
-        //   .then((response) => {
-        //     const { data: filenames } = response;
-        //     setPhotos((prev) => {
-        //       return [...prev, ...filenames];
-        //     });
-        //   });
+        setPhotos(files);
       }
 
     async function addNewPlaces(ev) {
@@ -45,6 +29,7 @@ function PlacesForm() {
 
         formData.append("title",title)
          Array.from(Photos).forEach(img=>{formData.append("photos",img)})
+        // formData.append("photos",Photos)
         formData.append("address",address)
         formData.append("description",description)
         formData.append("checkIn",checkIn)
