@@ -1,4 +1,4 @@
-import React ,{useEffect}from "react";
+import React ,{useEffect,useState}from "react";
 import { Link} from "react-router-dom";
 import "./PlacePage.css";
 import axios from 'axios';
@@ -8,21 +8,15 @@ import PlacesForm from "./PlacesForm";
 
 function PlacePage() {
   const { action } = useParams();
+ const[place,setPlace] = useState([]);
 
   // TO DISPLAY THE PLACES
 useEffect(()=>{
-  // const fetchdata = async () =>{
-  //   const data = await axios.get("/places");
-  //   console.log(data);
-  // }
-  // fetchdata();
+axios.get('/account/places').then(({data}) =>{
+  console.log(data);
+setPlace(data);
+})
 
-  axios.get('http://localhost:7000/account/places').then(response => {
-         // response.data is your 'course2'
-         console.log(response.data)
-    }).catch(err => {
-         console.log(err);
-    });
 },[]) ; 
 // this emty array states that whenever we refresh the page the function will be called
 
@@ -36,13 +30,20 @@ useEffect(()=>{
            </Link>
          </div>
 
-         {/* <div>
-           {place.length>0 && place.map(place =>(
+         <div>
+          {place.length>0 && place.map(place => (
             <div>
-              {place.title};
+              <div>
+                {place.photos.length > 0 && (
+                  <img src="{place.photos[0]}" alt="" />
+                )}
               </div>
-           ))}
-         </div> */}
+              <h2>{place.title}</h2>
+              <p>{place.description}</p>
+            </div>
+            
+          ))}
+         </div>
 
         </div>
       )}

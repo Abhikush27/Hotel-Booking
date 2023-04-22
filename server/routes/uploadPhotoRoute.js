@@ -8,25 +8,6 @@ const fs = require("fs");
 // to rename files on the server we use 'file system' fs
 const Place = require("../models/placemodel");
 
-// app.post("/upload",photosMiddleware.array('photos',100),async(req,res)=>{
-//    try{
-//       const uploadedFiles=[];
-//       console.log(req.files)
-//       for(let i=0;i<req.files.length;i++){
-//          const {path,originalname} = req.files[i];
-//          const parts = originalname.split('.');
-//          const extended = parts[parts.length-1];
-//          const newPath = path + '.' + extended;
-//          fs.renameSync(path,newPath);
-//          uploadedFiles.push(newPath);
-//       }
-//       res.json(req.files);
-//       // res.json(uploadedFiles);
-
-//    }catch(err){
-//       console.log(err)
-//    }
-// })
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -74,13 +55,10 @@ app.post("/places", photosMiddleware.array("photos"), async (req, res) => {
 
 //TO DISPLAY THE PAGES
 app.get("/account/places", async (req, res) => {
-  try {
-     const placedata = await Place.find();
-     res.status(200).send(placedata);
-  } catch (err) {
-     console.log(err);
-     res.status(500).send();
-  }
+  
+  const { token } = req.cookies;
+    const user = jwt.verify(token,"abhikush");
+    res.json(await Place.find({owner:user._id}))
 });
 
 module.exports = app;
