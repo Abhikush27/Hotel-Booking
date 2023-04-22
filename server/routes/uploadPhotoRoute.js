@@ -73,10 +73,14 @@ app.post("/places", photosMiddleware.array("photos"), async (req, res) => {
 
 
 //TO DISPLAY THE PAGES
-app.get('/places',(req,res)=>{
-  const { token } = req.cookies;
-  const user = jwt.verify(token,"abhikush");
-  res.json(Place.find({owner:user.id}))
-}) 
+app.get("/account/places", async (req, res) => {
+  try {
+     const placedata = await Place.find();
+     res.status(200).send(placedata);
+  } catch (err) {
+     console.log(err);
+     res.status(500).send();
+  }
+});
 
 module.exports = app;
