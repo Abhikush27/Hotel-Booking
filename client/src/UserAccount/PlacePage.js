@@ -18,7 +18,7 @@ setPlace(data);
 })
 
 },[]) ; 
-// this emty array states that whenever we refresh the page the function will be called
+// this empty array states that whenever we refresh the page the function will be called
 
   return (
     <div>
@@ -32,15 +32,15 @@ setPlace(data);
 
          <div>
           {place.length>0 && place.map(place => (
-            <div>
-              <div>
+            <Link to={'/account/places/'+place._id}>
+              <div >
                 {place.photos.length > 0 && (
-                  <img src="{place.photos[0]}" alt="" />
+                  <img className="image-fetch" src={`http://localhost:7000/${place.photos[0]}`} alt="" />
                 )}
               </div>
               <h2>{place.title}</h2>
               <p>{place.description}</p>
-            </div>
+            </Link>
             
           ))}
          </div>

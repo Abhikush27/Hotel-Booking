@@ -11,8 +11,6 @@ const images6 =['img26.webp','img27.webp']
 
 function Home() {
 
-// const data = (axios.get('/api/rooms/getallrooms')).data;
-// console.log(data);
   return (
     <div className='home'>
       <Banner />

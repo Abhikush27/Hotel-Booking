@@ -1,12 +1,12 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { Button } from "@mui/material";
 import axios from "axios";
-import { Navigate } from 'react-router-dom';
-// import { Navigate } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 
 
 function PlacesForm() {
 
+  const {id} = useParams();
     const [title, setTitle] = useState("");
     const [address, setAddress] = useState("");
     const [Photos, setPhotos] = useState([]);
@@ -16,20 +16,35 @@ function PlacesForm() {
     const [maxGuest, setMaxGuest] = useState(1);
     const[redirect,setRedirect] = useState(null);
 
+   useEffect(() =>{
+    if(!id)
+    {
+      return;
+    }
+    axios.get('/account/places/'+id).then(response =>{
+      const{data}=response;
+      setTitle(data.title);
+      setAddress(data.address);
+      setPhotos(data.Photos);
+      setdescription(data.description);
+      setCheckIn(data.checkIn);
+      setCheckOut(data.checkOut);
+      setMaxGuest(data.maxGuest);
+      setRedirect(data.redirect);
+    });
+   },[id]);
+
     function addPhotoByLink(event) {
-        // event.preventDefault();
         const files = event.target.files;
         setPhotos(files);
       }
 
     async function addNewPlaces(ev) {
         ev.preventDefault();
-        // const placeData = {title,address,Photos,description,checkIn,checkOut,maxGuest };
         const formData = new FormData()
 
         formData.append("title",title)
          Array.from(Photos).forEach(img=>{formData.append("photos",img)})
-        // formData.append("photos",Photos)
         formData.append("address",address)
         formData.append("description",description)
         formData.append("checkIn",checkIn)

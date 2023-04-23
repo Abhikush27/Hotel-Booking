@@ -13,8 +13,6 @@ margin-left: 4vh;
 margin-top: 13vh;
 cursor: pointer;
 display: inline-block;
-/* display: flex;
-justify-content: center; */
 }
 
 .addicon{
@@ -45,4 +43,10 @@ justify-content: center;
 }
 .hidden{
     display: none;
+}
+.image-fetch{
+    /* size: 2vh; */
+    height: 25vh;
+    width: 20vh;
+    display: flex;
 }
