@@ -65,9 +65,9 @@ app.get("/account/places", async (req, res) => {
 });
 
 
-app.get('/account/places/:id',async (req,res) =>{
-  const {id} = req.params;
-  res.json(await Place.findById(id));
-})
+// app.get('/account/places/:id',async (req,res) =>{
+//   const {id} = req.params;
+//   res.json(await Place.findById(id));
+// })
 
 module.exports = app;

@@ -33,6 +33,7 @@ setPlace(data);
          <div>
           {place.length>0 && place.map(place => (
             <Link to={'/account/places/'+place._id}>
+            
               <div >
                 {place.photos.length > 0 && (
                   <img className="image-fetch" src={`http://localhost:7000/${place.photos[0]}`} alt="" />
@@ -41,6 +42,7 @@ setPlace(data);
               <h2>{place.title}</h2>
               <p>{place.description}</p>
             </Link>
+            
             
           ))}
          </div>

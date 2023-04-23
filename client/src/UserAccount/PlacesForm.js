@@ -1,7 +1,7 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect,useState} from 'react'
 import { Button } from "@mui/material";
 import axios from "axios";
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate,useParams} from 'react-router-dom';
 
 
 function PlacesForm() {
