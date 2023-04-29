@@ -12,7 +12,7 @@ function PlacePage() {
 
   // TO DISPLAY THE PLACES
 useEffect(()=>{
-axios.get('/account/places').then(({data}) =>{
+axios.get('/account/user-places').then(({data}) =>{
   console.log(data);
 setPlace(data);
 })
@@ -32,9 +32,9 @@ setPlace(data);
 
          <div>
           {place.length>0 && place.map(place => (
-            <Link to={'/account/places/'+place._id}>
+            <Link key = {place._id} to={'/account/places/'+place._id}>
             
-              <div >
+              <div>
                 {place.photos.length > 0 && (
                   <img className="image-fetch" src={`http://localhost:7000/${place.photos[0]}`} alt="" />
                 )}

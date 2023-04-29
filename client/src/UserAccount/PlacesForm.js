@@ -7,7 +7,7 @@ import { Navigate,useParams} from 'react-router-dom';
 function PlacesForm() {
 
   const {id} = useParams();
-    const [title, setTitle] = useState("");
+  const [title, setTitle] = useState("");
     const [address, setAddress] = useState("");
     const [Photos, setPhotos] = useState([]);
     const [description, setdescription] = useState("");
@@ -39,7 +39,7 @@ function PlacesForm() {
         setPhotos(files);
       }
 
-    async function addNewPlaces(ev) {
+      async function addNewPlaces(ev) {
         ev.preventDefault();
         const formData = new FormData()
 
@@ -53,7 +53,6 @@ function PlacesForm() {
         await axios.post("/places", formData,{headers:{'Content-Type':"multipart/form-data"}});
         setRedirect('/account/places');
       }
-
      if(redirect){
       return <Navigate to ={redirect}/>
      }
@@ -85,7 +84,7 @@ function PlacesForm() {
     {/* check in check out */}
     <div className="checkin-out">
       <div className="checkin-input">
-        <h5>Checkin time</h5>
+        <h5>CheckIn time</h5>
         <input type="text" value={checkIn} onChange={(e) => setCheckIn(e.target.value)}/>
       </div>
       <div className="checkin-input">

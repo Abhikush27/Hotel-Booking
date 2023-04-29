@@ -57,7 +57,7 @@ app.post("/places", photosMiddleware.array("photos"), async (req, res) => {
 
 
 //TO DISPLAY THE PAGES
-app.get("/account/places", async (req, res) => {
+app.get("/account/user-places", async (req, res) => {
   
   const { token } = req.cookies;
     const user = jwt.verify(token,"abhikush");
@@ -65,9 +65,34 @@ app.get("/account/places", async (req, res) => {
 });
 
 
-// app.get('/account/places/:id',async (req,res) =>{
-//   const {id} = req.params;
-//   res.json(await Place.findById(id));
+app.get('/account/places/:id',async (req,res) =>{
+  try{
+    const {id} = req.params;
+
+    res.json(await Place.findById(id));
+  }
+  catch(e){
+console.log(e);  }  
+})
+
+// app.put('/account/places',async (req,res) =>{
+//   const { token } = req.cookies;
+//   const {id, title,
+//     address,
+//     description,
+//     photos,
+//     checkIn,
+//     checkOut,
+//     maxGuests,} = req.body();
+//     const user = jwt.verify(token,"abhikush");
+//     const placeDoc = await Place.findById(id);
+//     // if(user._id === placeDoc.owner)
+//     console.log(user._id);
+//     console.log(placeDoc.owner);
 // })
+
+app.get('/account/places', async(req,res)=>{
+ res.json( await Place.find());
+})
 
 module.exports = app;
