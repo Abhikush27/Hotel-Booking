@@ -13,6 +13,7 @@ function PlacesForm() {
     const [description, setdescription] = useState("");
     const [checkIn, setCheckIn] = useState("");
     const [checkOut, setCheckOut] = useState("");
+    const[price,setPrice] = useState("");
     const [maxGuest, setMaxGuest] = useState(1);
     const[redirect,setRedirect] = useState(null);
 
@@ -29,6 +30,7 @@ function PlacesForm() {
       setdescription(data.description);
       setCheckIn(data.checkIn);
       setCheckOut(data.checkOut);
+      setPrice(data.price);
       setMaxGuest(data.maxGuest);
       setRedirect(data.redirect);
     });
@@ -49,6 +51,7 @@ function PlacesForm() {
         formData.append("description",description)
         formData.append("checkIn",checkIn)
         formData.append("checkOut",checkOut)
+        formData.append("price",price)
         formData.append("maxGuest",maxGuest)
         await axios.post("/places", formData,{headers:{'Content-Type':"multipart/form-data"}});
         setRedirect('/account/places');
@@ -94,6 +97,10 @@ function PlacesForm() {
       <div className="checkin-input">
         <h5>Number of Guest</h5>
         <input type="text" value={maxGuest} onChange={(e) => setMaxGuest(e.target.value)}/>
+      </div>
+      <div className="checkin-input">
+        <h5>Price</h5>
+        <input type="text" value={price} onChange={(e) => setPrice(e.target.value)}/>
       </div>
     </div>
 
