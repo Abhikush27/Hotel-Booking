@@ -76,21 +76,22 @@ app.get('/account/places/:id',async (req,res) =>{
 console.log(e);  }  
 })
 
-// app.put('/account/places',async (req,res) =>{
-//   const { token } = req.cookies;
-//   const {id, title,
-//     address,
-//     description,
-//     photos,
-//     checkIn,
-//     checkOut,
-//     maxGuests,} = req.body();
-//     const user = jwt.verify(token,"abhikush");
-//     const placeDoc = await Place.findById(id);
-//     // if(user._id === placeDoc.owner)
-//     console.log(user._id);
-//     console.log(placeDoc.owner);
-// })
+app.put('/account/places',async (req,res) =>{
+  const { token } = req.cookies;
+  const {id, title,address,description,
+    photos, checkIn,checkOut, maxGuests} = req.body;
+    const user = jwt.verify(token,"abhikush");
+    const placeDoc = await Place.findById(id);
+    if(user._id === placeDoc.owner){
+      placeDoc.set({
+        title,address,description,
+        photos, checkIn,checkOut, maxGuests
+      });
+      await placeDoc.save();
+      res.json('ok');
+    }
+   
+})
 
 app.get('/account/places', async(req,res)=>{
  res.json( await Place.find());

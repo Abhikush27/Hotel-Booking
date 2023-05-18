@@ -13,7 +13,6 @@ function PlacesForm() {
     const [description, setdescription] = useState("");
     const [checkIn, setCheckIn] = useState("");
     const [checkOut, setCheckOut] = useState("");
-    // const[price,setPrice] = useState("");
     const [maxGuest, setMaxGuest] = useState(1);
     const[redirect,setRedirect] = useState(null);
 
@@ -30,7 +29,6 @@ function PlacesForm() {
       setdescription(data.description);
       setCheckIn(data.checkIn);
       setCheckOut(data.checkOut);
-      // setPrice(data.price);
       setMaxGuest(data.maxGuest);
       setRedirect(data.redirect);
     });
@@ -43,18 +41,33 @@ function PlacesForm() {
 
       async function addNewPlaces(ev) {
         ev.preventDefault();
-        const formData = new FormData()
 
+        const placeData = {
+          title,address,Photos,description,
+          checkIn,checkOut,maxGuest
+        };
+
+        if(id){
+          // update
+          await axios.put('/account/places',{
+            id, ...placeData
+          });
+          setRedirect('/account/places');
+        }
+        else{
+          const formData = new FormData()
+        // posting new place to database
         formData.append("title",title)
          Array.from(Photos).forEach(img=>{formData.append("photos",img)})
         formData.append("address",address)
         formData.append("description",description)
         formData.append("checkIn",checkIn)
         formData.append("checkOut",checkOut)
-        // formData.append("price",price)
         formData.append("maxGuest",maxGuest)
         await axios.post("/places", formData,{headers:{'Content-Type':"multipart/form-data"}});
         setRedirect('/account/places');
+        }
+        
       }
      if(redirect){
       return <Navigate to ={redirect}/>
