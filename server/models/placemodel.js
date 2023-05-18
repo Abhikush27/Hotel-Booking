@@ -9,7 +9,7 @@ const placeSchema = mongoose.Schema({
   photos: { type: [String] },
   checkIn: { type: Number },
   checkOut: { type: Number },
-  price:{type:Number},
+  // price:{type:Number},
   maxGuests: { type: Number },
  
 });

@@ -43,7 +43,7 @@ app.post("/places", photosMiddleware.array("photos"), async (req, res) => {
         photos,
         checkIn,
         checkOut,
-        price,
+        // price,
         maxGuests,
       });
       await place.save();
