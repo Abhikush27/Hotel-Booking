@@ -21,6 +21,7 @@ function PlacesForm() {
     {
       return;
     }
+    console.log(id)
     axios.get('/account/places/'+id).then(response =>{
       const{data}=response;
       setTitle(data.title);
@@ -47,7 +48,7 @@ function PlacesForm() {
           checkIn,checkOut,maxGuest
         };
 
-        if(id){
+        if(id && id!=="addplaces"){
           // update
           await axios.put('/account/places',{
             id, ...placeData

@@ -37,14 +37,8 @@ app.post("/places", photosMiddleware.array("photos"), async (req, res) => {
     console.log(user)
       const place = new Place({
         owner:user.id,
-        title,
-        address,
-        description,
-        photos,
-        checkIn,
-        checkOut,
-        // price,
-        maxGuests,
+        title,address,description,photos,
+        checkIn,checkOut, maxGuests,
       });
       await place.save();
       console.log(place)
@@ -79,13 +73,13 @@ console.log(e);  }
 app.put('/account/places',async (req,res) =>{
   const { token } = req.cookies;
   const {id, title,address,description,
-    photos, checkIn,checkOut, maxGuests} = req.body;
+     checkIn,checkOut, maxGuests} = req.body;
     const user = jwt.verify(token,"abhikush");
     const placeDoc = await Place.findById(id);
     if(user._id === placeDoc.owner){
       placeDoc.set({
         title,address,description,
-        photos, checkIn,checkOut, maxGuests
+       checkIn,checkOut, maxGuests
       });
       await placeDoc.save();
       res.json('ok');
