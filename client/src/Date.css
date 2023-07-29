@@ -21,7 +21,7 @@
 .date>button{
     position: absolute;
     color: white;
-    background-color: #ff7779;
+    background-color: #f28383;
     z-index: 100%;
     width: 140px;
     margin-left: 40px;
@@ -29,5 +29,5 @@
 }
 .date>button:hover{
     background-color: white;
-    color: #ff7779;
+    color: #333;
 }

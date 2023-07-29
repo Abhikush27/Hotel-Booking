@@ -7,7 +7,6 @@ const User = require('../models/loginmodel');
 const bcrypt = require('bcryptjs');
 const bcryptSalt= bcrypt.genSaltSync(10);
 
-// app.use(express.json());
 
 app.post('/register',async function(req,res){
     const{name,email,password} = req.body;

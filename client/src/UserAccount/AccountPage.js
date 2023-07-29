@@ -15,6 +15,7 @@ const[redirect,setRedirect] = useState(null);
 
     // on clicking the link "My profile" in account page we will get "undirected" in the subpage
     let {subpage} = useParams();
+    // to access the parameters of the current route we use useParams()
     if(subpage === undefined){
     subpage ='profile'}
 

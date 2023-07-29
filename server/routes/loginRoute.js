@@ -19,6 +19,10 @@ app.post('/login', async (req,res) => {
     if (userDoc) {
       const passOk = bcrypt.compareSync(password, userDoc.password);
       if (passOk) {
+        //  It contains the data you want to include in the token.
+        // abhikush is the secret key
+        // fourth is the callback fuction executed once the JWT is created
+        
         jwt.sign({
           email:userDoc.email,
           id:userDoc._id

@@ -19,37 +19,26 @@ const [places,setPlaces]=useState([]);
 
 
   return (
-    // <Link to="/room/6415770bbed42840203c4838">
-    // <div className="cards">
 
-    //     <Carousel showThumbs ={false} autoPlay={true} interval={5000} infiniteLoop={true}>
-    //     {props.src.map(image=>
-    //      <div className="cards-image">
-    //        <img src={image} alt="" /> 
-    //      </div>
-    //       )}
-    //     </Carousel>
-      
-    //     <div className="card-info">
-    //       <h2>{props.title}</h2>
-    //       <h4>{props.description}</h4>
-    //       <h3>{props.price}</h3>
-    //     </div>
-
-    // </div>
-
-    <div className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+    <div className="card">
       {places.length > 0 && places.map(place => (
         <Link to={'/place/'+place._id}>
-          <div className="bg-gray-500 mb-2 rounded-2xl flex">
+          {/* <div className="context"> */}
+          <div className="images2">
             {place.photos?.[0] && (
-              <img className="rounded-2xl object-cover aspect-square"  src={`http://localhost:7000/${place.photos[0]}`} alt=""/>
+              <img src={`http://localhost:7000/${place.photos[0]}`} alt=""/>
             )}
           </div>
-          <h2 className="font-bold">{place.address}</h2>
+          {/* <h2 className="font-bold">{place.address}</h2>
           <h3 className="text-sm text-gray-500">{place.title}</h3>
           <div className="mt-1">
-            <span className="font-bold">${place.price}</span> per night
+            <span className="font-bold">{place.price}</span> per night
+          </div> */}
+
+          <div className="text">
+          <h2 className="address">{place.address}</h2>
+          <h3>{place.title}</h3>
+          <h4>{place.price}</h4>
           </div>
         </Link>
       ))}
@@ -58,3 +47,4 @@ const [places,setPlaces]=useState([]);
 }
 
 export default Cards
+// called in home.js

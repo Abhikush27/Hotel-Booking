@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors');
+// cors is used to connect when the frontend and bacckend are running on different ports 
 const app = express();
 const cookieParser = require("cookie-parser")
 const database = require("./database/database");

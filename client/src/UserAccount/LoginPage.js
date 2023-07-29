@@ -11,20 +11,18 @@ function LoginPage() {
 
   const { setUser } = useContext(UserContext)
 
-  async function loginUser(e) {
-    e.preventDefault()
-
+  async function loginUser(ev) {
+    ev.preventDefault();
     try {
-      const res = await axios.post('http://localhost:7000/login', {
-        email,
-        password,
-      })
-      // console.log(res)
-      setUser(res.data)
-      // alert('login Successful');
-      setRedirect(true)
+      const {data} = await axios.post('/login', {email,password});
+      if(data){setUser(data);
+      alert('Login successful');
+      setRedirect(true);}
+      else{
+        alert('Wrong credentials')
+      }
     } catch (e) {
-      alert('login failed')
+      alert('Login failed');
     }
   }
 

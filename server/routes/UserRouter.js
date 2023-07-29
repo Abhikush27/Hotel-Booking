@@ -3,6 +3,7 @@ const {verify} = require('../middleware/verify');
 const app = express.Router();
 const UserModel = require('../models/loginmodel')
 
+// This is used in UserContext.js
 app.get('/profile',verify,async(req,res)=>{
     try{
         const user = await UserModel.findById(req.user.id)

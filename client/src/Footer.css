@@ -1,11 +1,24 @@
-.footer {
-    border-top: 1px solid lightgray;
-    padding: 20px;
-    background-color: #f7f7f7;
-    text-align: center;
-}
 
-.footer > p {
-    padding: 5px;
-    font-size: 14px;
-}
+.footer {
+    background-color: #f28383; 
+    color: #fff; 
+    padding: 20px;
+    text-align: center;
+    position: sticky;
+    bottom: 0;
+  }
+  
+  /* Style the links inside the footer */
+  .footer p {
+    color: #fff; /* Change to your desired link color */
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  /* Style the links on hover */
+  .footer p:hover {
+    text-decoration: underline;
+  }
+  
+  
+  

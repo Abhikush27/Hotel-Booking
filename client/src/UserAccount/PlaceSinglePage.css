@@ -1,0 +1,20 @@
+h1{
+justify-content: center;
+text-align: center;
+color: black;
+}
+.atag{
+    padding-left: 92vh ;
+    color: black;
+    }   
+.image{
+    height: 60vh;
+    width: 110vh;
+    margin-left: 47vh ;
+}
+.booking{
+   display: flex;
+   justify-content: right;
+   text-align: right;
+   padding-right: 25vh;
+}

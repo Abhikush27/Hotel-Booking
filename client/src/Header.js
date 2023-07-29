@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import './Header.css'
 import SearchIcon from '@mui/icons-material/Search'
 import LanguageIcon from '@mui/icons-material/Language'
-// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import { Link } from 'react-router-dom'
 import { UserContext } from './UserAccount/UserContext'
@@ -27,16 +26,13 @@ function Header() {
       </div>
 
       <div className="header-right">
-        {/* <p>Become a host</p> */}
 
-        {/* <ExpandMoreIcon/> */}
+        <LanguageIcon className='lang-icon'/>
 
-        <LanguageIcon />
-        {/* <Link to={user?'/account':'/login'}> */}
         <Link to={user?'/account':'/login'}>
-          <AccountCircleIcon style={{ color: 'black' }} />
-
-          {user && (<div>{user.name}</div>)}
+          <AccountCircleIcon style={{ color: 'black'}} />
+          <div className='users'>{user && (<p>{user.name}</p>)}</div>
+          
         </Link>
       </div>
     </div>

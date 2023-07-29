@@ -16,6 +16,7 @@ const [ready,setReady] = useState(false);
         // }
         async function getUser(){
             try{
+              // This is taken from UserRouter.js
               const res = (await axios.get('/profile'))
               // console.log(res)
               setUser(res.data)

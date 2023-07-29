@@ -36,7 +36,7 @@ setPlace(data);
             
               <div>
                 {place.photos.length > 0 && (
-                  <img className="image-fetch" src={`http://localhost:7000/${place.photos[0]}`} alt="" />
+                  <img className="image-fetch" src={'http://localhost:7000/'+place.photos} alt="" />
                 )}
               </div>
               <h2>{place.title}</h2>

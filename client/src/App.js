@@ -11,6 +11,7 @@ import { BrowserRouter as Router,Routes, Route } from "react-router-dom";
 import { UserContextProvider } from './UserAccount/UserContext';
 import axios from 'axios';
 import PlacesForm from './UserAccount/PlacesForm';
+import PlaceSinglePage from './UserAccount/PlaceSinglePage';
 
 
 axios.defaults.withCredentials=true;
@@ -20,8 +21,6 @@ function App() {
 
 
   return (
-
-
     <div className="app">
 <UserContextProvider>
 
@@ -30,6 +29,7 @@ function App() {
 
         <Routes>
           <Route path="/"  element={<Home/>} />
+          {/* Home will be rendered */}
           <Route path="/search"  element={<SearchPage/>} />
           <Route path="/login"  element={<LoginPage/>} />
           <Route path="/register"  element={<RegisterPage/>} />
@@ -38,6 +38,7 @@ function App() {
           <Route path="/account/:subpage/:action" element={<AccountPage/>} />
           {/* redirecting the saved pages to "addPlaces" Page */}
           <Route path="/account/places/:id" element={<PlacesForm/>} />
+          <Route path="/place/:id"element={<PlaceSinglePage/>}/>
         </Routes>
         
         <Footer />

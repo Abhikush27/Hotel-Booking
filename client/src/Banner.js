@@ -25,7 +25,7 @@ const navigateTosearch = () => {
           </div>
 
           <div className='banner-bg'>
-            <h2>video will come here</h2>
+            <h2>GET THE BEST YOU WANT</h2>
             <Button onClick={navigateTosearch}>Explore More</Button>
           </div>
         
@@ -34,3 +34,4 @@ const navigateTosearch = () => {
 }
 
 export default Banner
+// called in home.js

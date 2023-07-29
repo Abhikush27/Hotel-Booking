@@ -29,6 +29,7 @@ app.post("/places", photosMiddleware.array("photos"), async (req, res) => {
     console.log(req.body);
     console.log(req.files, "files");
     const photos = req.files.map(file=>{
+      // file's destination directory and name 
       return file.destination + file.filename
     })
   
@@ -87,6 +88,7 @@ app.put('/account/places',async (req,res) =>{
    
 })
 
+// this is for the home page
 app.get('/account/places', async(req,res)=>{
  res.json( await Place.find());
 })

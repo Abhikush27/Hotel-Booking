@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import {Link} from "react-router-dom"
 import './LoginPage.css'
 import axios from "axios"
-// important(This popular library is used to communicate with the backend,Using Axios we make API requests in our application. Once the request is made we get the data in Return)
+// This popular library is used to communicate with the backend,Using Axios we make API requests in our application. Once the request is made we get the data in Return)
 
 
 function RegisterPage() {
@@ -15,8 +15,9 @@ const [password,setPassword] = useState('');
 // this function will submit the form on clicking the "register" button
  function registerUser(e){
   e.preventDefault();
-// axios.get('http://localhost:7000/test');
+
 try{
+  // as we have our application on port 3000 ,so to communicate with different ports we use 'Cors'(called in app.js)
 axios.post('http://localhost:7000/register',{
   name,
   email,

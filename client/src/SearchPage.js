@@ -47,5 +47,5 @@ function SearchPage() {
 
   )
 }
-
+// called in App.js
 export default SearchPage

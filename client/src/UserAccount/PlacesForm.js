@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react'
 import { Button } from "@mui/material";
 import axios from "axios";
 import { Navigate,useParams} from 'react-router-dom';
+import './PlaceForm.css'
 
 
 function PlacesForm() {
@@ -112,10 +113,6 @@ function PlacesForm() {
         <h5>Number of Guest</h5>
         <input type="text" value={maxGuest} onChange={(e) => setMaxGuest(e.target.value)}/>
       </div>
-      {/* <div className="checkin-input">
-        <h5>Price</h5>
-        <input type="text" value={price} onChange={(e) => setPrice(e.target.value)}/>
-      </div> */}
     </div>
 
     <Button type='submit' style={{ background: "red", color: "white" }} >Save</Button>

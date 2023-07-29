@@ -2,14 +2,16 @@
   display: flex;
   justify-content:space-between; /*imp */
   position: sticky;
+  top: 0;
   width: 100%;
   z-index: 100;
 }
 
 .header-logo{
-  height: 65px;
+  height: 50px;
   margin-left: 60px;
   margin-top: 8px;
+  
 }
 
 .header-searchbar{
@@ -31,7 +33,21 @@
 
 .header-right{
   display: flex;
+padding-left: 1.5vh;
+padding-top: 1.6vh;
+margin-right: 8vh;
+margin-top: 2vh;
   align-items: center;
   padding-top: 0.7vh;
-  padding-right: 70px;
+  padding-right: 80px;
 }
+.users{
+  display: inline-block;
+  padding-top: 2vh;
+  padding-left: 1vh;
+}
+.lang-icon{
+  padding-right: 2vh;
+}
+
+
