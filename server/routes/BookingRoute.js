@@ -18,7 +18,7 @@ app.post('/booking',async (req,res)=>{
              checkIn,checkOut,phone,Guests
          });
         
-            res.json(userDoc);
+            res.json(bookingdoc);
         }
         catch(e){
         res.status(422).json(e);
