@@ -10,7 +10,7 @@ const loginRoute = require('./routes/loginRoute');
 const profileRoute = require('./routes/UserRouter');
 const logoutRoute = require('./routes/logoutRoute');
 const uploadPhoto = require('./routes/uploadPhotoRoute');
-const bookings = require('./routes/bookingRoute');
+const bookingRoute = require('./routes/bookingsRoute')
 
 
 // "bcrypt" is used to encrypt the password
@@ -37,6 +37,7 @@ app.use(registerRoute)
 app.use(profileRoute);
 app.use(logoutRoute);
 app.use(uploadPhoto);
+app.use(bookingRoute);
 
 app.get('/test',function(req,res){
     res.json('tested');
