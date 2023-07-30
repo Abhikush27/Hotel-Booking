@@ -12,6 +12,7 @@ import { UserContextProvider } from './UserAccount/UserContext';
 import axios from 'axios';
 import PlacesForm from './UserAccount/PlacesForm';
 import PlaceSinglePage from './UserAccount/PlaceSinglePage';
+import MyBookings from './UserAccount/MyBookings';
 
 
 axios.defaults.withCredentials=true;
@@ -39,6 +40,7 @@ function App() {
           {/* redirecting the saved pages to "addPlaces" Page */}
           <Route path="/account/places/:id" element={<PlacesForm/>} />
           <Route path="/place/:id"element={<PlaceSinglePage/>}/>
+          <Route path="/account/bookings"element={<MyBookings/>}/>
         </Routes>
         
         <Footer />

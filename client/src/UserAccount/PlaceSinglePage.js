@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './PlaceSinglePage.css'
+import Booking from './Booking'
 
 function PlaceSinglePage() {
   const { id } = useParams();
@@ -30,21 +31,16 @@ function PlaceSinglePage() {
       <p style ={{textAlign:'center',color:'black'}}>{place.description}</p>
 
       <div style ={{textAlign:'center',color:'black',paddingTop:'2vh'}}>
-        Check-in: {place.checkIn} <br/>
-        Check-out: {place.checkOut} <br/>
-        Max number of Guests: {place.maxGuest}       
+       <b> Check-in: {place.checkIn} <br/>
+        Check-out: {place.checkOut} <br/>    
+        </b>
       </div>
 
-      <div className='booking'>
-      <h3> <label>Check in:</label>
-       <input type="date" />
-       <br />
-       <label>Check out:</label>
-       <input type="date" />
-       <br />
-       <button>Book Now</button>
-       </h3>
-     </div>
+<div>
+
+  <Booking place = {place}/>
+</div>
+      
     </div>
   );
 }

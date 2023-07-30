@@ -18,7 +18,6 @@ setPlace(data);
 })
 
 },[]) ; 
-// this empty array states that whenever we refresh the page the function will be called
 
   return (
     <div>

@@ -15,8 +15,8 @@ function LoginPage() {
     ev.preventDefault();
     try {
       const {data} = await axios.post('/login', {email,password});
-      if(data){setUser(data);
-      alert('Login successful');
+      if(data)
+      {setUser(data);
       setRedirect(true);}
       else{
         alert('Wrong credentials')
