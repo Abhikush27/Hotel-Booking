@@ -29,11 +29,6 @@ const [places,setPlaces]=useState([]);
               <img src={`http://localhost:7000/${place.photos[0]}`} alt=""/>
             )}
           </div>
-          {/* <h2 className="font-bold">{place.address}</h2>
-          <h3 className="text-sm text-gray-500">{place.title}</h3>
-          <div className="mt-1">
-            <span className="font-bold">{place.price}</span> per night
-          </div> */}
 
           <div className="text">
           <h2 className="address">{place.address}</h2>
